@@ -1,0 +1,74 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <link rel="stylesheet" href="http://code.leafletjs.com/leaflet-0.3.1/leaflet.css" type=
+    "text/css" /><!--[if lte IE 8]>
+    <link rel="stylesheet" href="http://code.leafletjs.com/leaflet-0.3.1/leaflet.ie.css" />
+<![endif]-->
+    <title>Aanvraag formulier</title>
+    <style type="text/css">
+/*<![CDATA[*/
+    div.map {height: 300px}
+    div.c1 {width:500px;}
+    /*]]>*/
+    </style>
+  </head>
+  <body>
+    <div id="content" class="c1">
+      <h1>
+        Aanvraag formulier
+      </h1>
+      <p>
+        Lorizzle dawg dolizzle sit amizzle, consectetuer adipiscing crackalackin. Nullizzle sapien
+        tellivizzle, shiznit volutpizzle, suscipit tellivizzle, black for sure, i'm in the shizzle.
+        Pellentesque eget tortizzle. Sizzle eros. Ma nizzle away dolor that's the shizzle turpis
+        tempizzle yippiyo. Maurizzle pellentesque nibh break it down turpizzle. Gizzle izzle
+        brizzle. My shizz eleifend hizzle mah nizzle. Get down get down gangster dawg platea
+        crackalackin. Yo dapibizzle. Mofo shit urna, pretizzle eu, mattis shizznit, sizzle crunk,
+        nunc. Sizzle shizzle my nizzle crocodizzle. Integer semper velizzle own yo' shiznit.
+      </p>
+      <div id="map" class="map"></div>
+      <form id="Zoekformulier" action="#" method="get" title="Zoekformulier" name="Zoekformulier">
+        <fieldset>
+          <legend>Coordinatenpaar</legend> <label for="xcoord">x coordinaat</label> <input type=
+          "text" id="xcoord" name="xcoord" value="" /> <label for="ycoord">y
+          coordinaat</label><input type="text" id="ycoord" name="ycoord" value="" />
+        </fieldset>
+        <fieldset>
+          <legend>Beschrijving</legend> <label for="adresbeschrijving">adresbeschrijving</label> 
+          <textarea id="adresbeschrijving" name="adresbeschrijving" rows="4" cols="45">
+Postcode, plaatsnaam of andere adres gegevens.
+</textarea>
+        </fieldset><input type="hidden" name="afwijking" value="50" /> <button type=
+        "submit">verstuur gegevens</button>
+      </form>
+    </div><script src="http://code.leafletjs.com/leaflet-0.3.1/leaflet.js" type="text/javascript">
+</script><script type="text/javascript">
+//<![CDATA[
+    var map = new L.Map('map');
+    var cloudmadeUrl = 'http://{s}.tile.cloudmade.com/BC9A493B41014CAABB98F0471D759707/997/256/{z}/{x}/{y}.png',
+                cloudmadeAttribution = 'Map data &copy; 2012 OpenStreetMap contributors, Imagery &copy; 2012 CloudMade',
+                cloudmade = new L.TileLayer(cloudmadeUrl, {maxZoom: 18, attribution: cloudmadeAttribution});
+
+    map.setView(new L.LatLng(52.086, 5.114), 14).addLayer(cloudmade);
+
+    var markerLocation = new L.LatLng(52.086, 5.114),
+                marker = new L.Marker(markerLocation);
+    map.addLayer(marker);
+    marker.bindPopup("<h2>Initiele locatie<\/h2>Deze locatie is gevonden op basis van ....");
+    map.on('click', onMapClick);
+
+    function onMapClick(e) {
+                var lat = e.latlng.lat.toFixed(4),
+                                lng = e.latlng.lng.toFixed(4),
+                                latlngStr = '(' + lat + ', ' + lng + ')';
+                marker.setLatLng(e.latlng);
+                document.getElementById('xcoord').value=lng;
+                document.getElementById('ycoord').value=lat;
+                marker.bindPopup("<h2>Locatie<\/h2>De aangewezen locatie is " + latlngStr).openPopup();
+    }
+    //]]>
+    </script>
+  </body>
+</html>

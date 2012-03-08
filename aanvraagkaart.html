@@ -1,0 +1,73 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <link rel="stylesheet" href="http://code.leafletjs.com/leaflet-0.3.1/leaflet.css" type=
+    "text/css" /><!--[if lte IE 8]>
+    <link rel="stylesheet" href="http://code.leafletjs.com/leaflet-0.3.1/leaflet.ie.css" />
+<![endif]-->
+    <title>Aanvraag kaart</title>
+    <style type="text/css">
+/*<![CDATA[*/
+    body {
+    padding: 0;
+    margin: 0;
+    }
+    html, body, #map {
+    height: 100%;
+    }
+    #adresbeschrijving {
+    width: 300px;
+    }
+    /*]]>*/
+    </style>
+  </head>
+  <body>
+    <div id="map" class="map"></div><script src=
+    "http://code.leafletjs.com/leaflet-0.3.1/leaflet.js" type="text/javascript">
+</script><script type="text/javascript">
+//<![CDATA[
+    var map = new L.Map('map');
+    var cloudmadeUrl = 'http://{s}.tile.cloudmade.com/BC9A493B41014CAABB98F0471D759707/997/256/{z}/{x}/{y}.png',
+                cloudmadeAttribution = 'Map data &copy; 2012 OpenStreetMap contributors, Imagery &copy; 2012 CloudMade',
+                cloudmade = new L.TileLayer(cloudmadeUrl, {maxZoom: 18, attribution: cloudmadeAttribution});
+
+    map.addLayer(cloudmade).locateAndSetView(14);
+
+    var markerLocation = new L.LatLng(52.086, 5.114),
+                marker = new L.Marker(markerLocation);
+    map.addLayer(marker);
+
+    map.on('locationerror', onLocationError);
+    function onLocationError(e) {
+    console.error(e.message);
+        map.setView(new L.LatLng(52.086, 5.114), 14);
+                marker.bindPopup("<h2>Initiele locatie<\/h2>Dit is de default locatie.");
+    }
+
+    map.on('locationfound', onLocationFound);
+    function onLocationFound(e) {
+                marker.setLatLng(e.latlng);
+        marker.bindPopup("<h2>Initiele locatie<\/h2>Deze locatie is gevonden op basis van geolocatie");
+    }
+
+    map.on('click', onMapClick);
+    function onMapClick(e) {
+                var lat = e.latlng.lat.toFixed(4),
+                                lng = e.latlng.lng.toFixed(4),
+                                latlngStr = '(' + lat + ', ' + lng + ')';
+                marker.setLatLng(e.latlng);
+
+                var pText="<h2>Melding Plaatsen<\/h2><p>Lorizzle dawg dolizzle sit amizzle, consectetuer adipiscing crackalackin. Nullizzle sapien tellivizzle, shiznit volutpizzle, suscipit tellivizzle, black for sure, i'm in the shizzle.Pellentesque eget tortizzle. Sizzle eros.<\/p>";
+                        pText+='<form id="Zoekformulier" action="#" method="get" title="Zoekformulier" name="Zoekformulier">';
+                        pText+='<fieldset><legend>Coordinatenpaar<\/legend><label for="xcoord">x coordinaat<\/label><input type="text" id="xcoord" name="xcoord" value="'+ lng+'" /><br>';
+                        pText+='<label for="ycoord">y coordinaat<\/label><input type="text" id="ycoord" name="ycoord" value="'+lat+'" /><\/fieldset>';
+                        pText+='<fieldset><legend>Beschrijving<\/legend><label for="adresbeschrijving">adresbeschrijving<\/label>'; 
+                        pText+='<textarea id="adresbeschrijving" name="adresbeschrijving" rows="4">Postcode, plaatsnaam of andere adres gegevens.<\/textarea>';
+                        pText+='<\/fieldset><button type="submit">verstuur gegevens<\/button><\/form>';
+                marker.bindPopup(pText,{maxWidth:400}).openPopup();
+    }
+    //]]>
+    </script>
+  </body>
+</html>
