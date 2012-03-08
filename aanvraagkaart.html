@@ -41,8 +41,8 @@
     var cloudmadeUrl = 'http://{s}.tile.cloudmade.com/BC9A493B41014CAABB98F0471D759707/997/256/{z}/{x}/{y}.png',
                 cloudmadeAttribution = 'Map data &copy; 2012 OpenStreetMap contributors, Imagery &copy; 2012 CloudMade',
                 cloudmade = new L.TileLayer(cloudmadeUrl, {maxZoom: 18, attribution: cloudmadeAttribution});
-
-    map.addLayer(cloudmade).locateAndSetView(14);
+    map.addLayer(cloudmade);
+    map.locateAndSetView(14);
 
     var markerLocation = new L.LatLng(52.086, 5.114),
                 marker = new L.Marker(markerLocation);
@@ -50,14 +50,13 @@
 
     map.on('locationerror', onLocationError);
     function onLocationError(e) {
-    console.error(e.message);
         map.setView(new L.LatLng(52.086, 5.114), 14);
                 marker.bindPopup("<h2>Initiele locatie<\/h2>Dit is de default locatie.");
     }
 
     map.on('locationfound', onLocationFound);
     function onLocationFound(e) {
-                marker.setLatLng(e.latlng);
+        marker.setLatLng(e.latlng);
         marker.bindPopup("<h2>Initiele locatie<\/h2>Deze locatie is gevonden op basis van geolocatie");
     }
 
