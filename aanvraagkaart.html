@@ -11,21 +11,11 @@
     </title>
     <style type="text/css">
 /*<![CDATA[*/
-    body {
-    padding: 0;
-    margin: 0;
-    }
-    html, body, #map {
-    height: 100%;
-    }
-    #adresbeschrijving {
-    width: 300px;
-    }
-    p.ouweie{
-    padding: 1em;
-    margin: 0 1em;
-    border: 2px solid red;
-    }
+    body {padding: 0;margin: 0;}
+    html, body, #map {height: 100%;}
+    #beschrijving {width: 300px;}
+    #adres {width: 300px;}
+    p.ouweie{padding: 1em; margin: 0 1em; border: 2px solid red;}
     /*]]>*/
     </style>
   </head>
@@ -35,6 +25,7 @@
 <![endif]-->
     <div id="map" class="map"></div><script src=
     "http://code.leafletjs.com/leaflet-0.3.1/leaflet.js" type="text/javascript">
+</script><script src="reverselocator.js" type="text/javascript">
 </script><script type="text/javascript">
 //<![CDATA[
     var map = new L.Map('map');
@@ -71,10 +62,12 @@
                         pText+='<form id="Zoekformulier" action="#" method="get" title="Zoekformulier" name="Zoekformulier">';
                         pText+='<fieldset><legend>Coordinatenpaar<\/legend><label for="xcoord">x coordinaat<\/label><input type="text" id="xcoord" name="xcoord" value="'+ lng+'" /><br>';
                         pText+='<label for="ycoord">y coordinaat<\/label><input type="text" id="ycoord" name="ycoord" value="'+lat+'" /><\/fieldset>';
-                        pText+='<fieldset><legend>Beschrijving<\/legend><label for="adresbeschrijving">adresbeschrijving<\/label>'; 
-                        pText+='<textarea id="adresbeschrijving" name="adresbeschrijving" rows="4">Postcode, plaatsnaam of andere adres gegevens.<\/textarea>';
+                        pText+='<fieldset><legend>Adres</legend> <label for="adres">in de buurt van</label> <input type="text" id="adres" name="adres" value="" /></fieldset>';
+                        pText+='<fieldset><legend>Beschrijving<\/legend><label for="beschrijving">beschrijving<\/label>'; 
+                        pText+='<textarea id="beschrijving" name="beschrijving" rows="4">Postcode, plaatsnaam of andere gegevens voor deze plek.<\/textarea>';
                         pText+='<\/fieldset><button type="submit">verstuur gegevens<\/button><\/form>';
                 marker.bindPopup(pText,{maxWidth:400}).openPopup();
+                reverseLocate(lng,lat,4326);
     }
     //]]>
     </script>
