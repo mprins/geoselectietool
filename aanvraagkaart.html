@@ -2,13 +2,18 @@
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
+    <title>
+      Aanvraag kaart
+    </title>
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content=
+    "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
     <link rel="stylesheet" href="http://code.leafletjs.com/leaflet-0.3.1/leaflet.css" type=
     "text/css" /><!--[if lte IE 8]>
     <link rel="stylesheet" href="http://code.leafletjs.com/leaflet-0.3.1/leaflet.ie.css" />
 <![endif]-->
-    <title>
-      Aanvraag kaart
-    </title>
+
     <style type="text/css">
 /*<![CDATA[*/
     body {padding: 0;margin: 0;}
@@ -62,7 +67,7 @@
                         pText+='<form id="Zoekformulier" action="#" method="get" title="Zoekformulier" name="Zoekformulier">';
                         pText+='<fieldset><legend>Coordinatenpaar<\/legend><label for="xcoord">x coordinaat<\/label><input type="text" id="xcoord" name="xcoord" value="'+ lng+'" /><br>';
                         pText+='<label for="ycoord">y coordinaat<\/label><input type="text" id="ycoord" name="ycoord" value="'+lat+'" /><\/fieldset>';
-                        pText+='<fieldset><legend>Adres</legend> <label for="adres">in de buurt van</label> <input type="text" id="adres" name="adres" value="" /></fieldset>';
+                        pText+='<fieldset><legend>Adres<\/legend> <label for="adres">in de buurt van<\/label> <input type="text" id="adres" name="adres" value="" /><\/fieldset>';
                         pText+='<fieldset><legend>Beschrijving<\/legend><label for="beschrijving">beschrijving<\/label>'; 
                         pText+='<textarea id="beschrijving" name="beschrijving" rows="4">Postcode, plaatsnaam of andere gegevens voor deze plek.<\/textarea>';
                         pText+='<\/fieldset><button type="submit">verstuur gegevens<\/button><\/form>';
