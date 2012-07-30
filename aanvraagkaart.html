@@ -38,7 +38,7 @@
                 cloudmadeAttribution = 'Map data &copy; 2012 OpenStreetMap contributors, Imagery &copy; 2012 CloudMade',
                 cloudmade = new L.TileLayer(cloudmadeUrl, {maxZoom: 18, attribution: cloudmadeAttribution});
     map.addLayer(cloudmade);
-    map.locateAndSetView(14);
+    map.locate({setView: true, maxZoom: 14});
 
     var markerLocation = new L.LatLng(52.086, 5.114),
                 marker = new L.Marker(markerLocation);
