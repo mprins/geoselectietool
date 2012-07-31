@@ -1,21 +1,17 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <title>
-      Aanvraag formulier
-    </title>
+    <title>Aanvraag formulier</title>
     <meta name="HandheldFriendly" content="True" />
-    <meta name="viewport" content=
-    "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
-    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.4/leaflet.css" type="text/css"/>
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.4.1/leaflet.css" type="text/css" />
     <!--[if lte IE 8]>
-        <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.4/leaflet.ie.css" />
+        <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.4.1/leaflet.ie.css" type="text/css />
     <![endif]-->
 
     <style type="text/css">
-/*<![CDATA[*/
+    /*<![CDATA[*/
     div.map {height: 300px}
     div.c1 {width:500px;}
     #beschrijving {width: 300px;}
@@ -25,9 +21,7 @@
   </head>
   <body>
     <div id="content" class="c1">
-      <h1>
-        Aanvraag formulier
-      </h1>
+      <h1>Aanvraag formulier</h1>
       <p>
         Lorizzle dawg dolizzle sit amizzle, consectetuer adipiscing crackalackin. Nullizzle sapien
         tellivizzle, shiznit volutpizzle, suscipit tellivizzle, black for sure, i'm in the shizzle.
@@ -40,24 +34,21 @@
       <div id="map" class="map"></div>
       <form id="Zoekformulier" action="#" method="get" title="Zoekformulier" name="Zoekformulier">
         <fieldset>
-          <legend>Coordinatenpaar</legend> <label for="xcoord">x coordinaat</label> <input type=
-          "text" id="xcoord" name="xcoord" value="" /> <label for="ycoord">y coordinaat</label>
-          <input type="text" id="ycoord" name="ycoord" value="" />
+          <legend>Coordinatenpaar</legend> 
+          <label for="xcoord">x coordinaat</label> <input type="text" id="xcoord" name="xcoord" value="" />
+          <label for="ycoord">y coordinaat</label> <input type="text" id="ycoord" name="ycoord" value="" />
         </fieldset>
         <fieldset>
-          <legend>Adres</legend> <label for="adres">in de buurt van</label> <input type="text" id=
-          "adres" name="adres" value="" />
+          <legend>Adres</legend> 
+          <label for="adres">in de buurt van</label> <input type="text" id="adres" name="adres" value="" />
         </fieldset>
         <fieldset>
           <legend>Beschrijving</legend> <label for="beschrijving">beschrijving</label> 
-          <textarea id="beschrijving" name="beschrijving" rows="4">
-Postcode, plaatsnaam of andere gegevens voor deze plek.
-</textarea>
-        </fieldset><input type="hidden" name="afwijking" value="50" /> <button type=
-        "submit">verstuur gegevens</button>
+          <textarea id="beschrijving" name="beschrijving" rows="4">Postcode, plaatsnaam of andere gegevens voor deze plek.</textarea>
+        </fieldset><input type="hidden" name="afwijking" value="50" /> <button type="submit">verstuur gegevens</button>
       </form>
     </div>
-    <script src="http://cdn.leafletjs.com/leaflet-0.4/leaflet.js" type="text/javascript"></script>    
+    <script src="http://cdn.leafletjs.com/leaflet-0.4.1/leaflet.js" type="text/javascript"></script>    
     <script src="reverselocator.js" type="text/javascript"></script>
     <script type="text/javascript">
 //<![CDATA[
@@ -84,7 +75,7 @@ Postcode, plaatsnaam of andere gegevens voor deze plek.
                 document.getElementById('ycoord').value=lat;
                 marker.bindPopup("<h2>Locatie<\/h2>De aangewezen locatie is " + latlngStr).openPopup();
     }
-    //]]>
+//]]>
     </script>
   </body>
 </html>
