@@ -1,5 +1,5 @@
 # Geoselectie tool
 
-In deze repository een aantal quick&dirty voorbeelden.
+In deze repository een aantal quick&dirty voorbeelden met behulp van [Leaflet](http://leafletjs.com/).
 
-Voor meer informatie live voorbeelden zie: http://mineleni.github.com/geoselectietool/
+Voor meer informatie en live voorbeelden zie: http://mineleni.github.io/geoselectietool/
