@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.1/leaflet.css" type="text/css" />
+    <link rel="stylesheet" href="//cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" type="text/css" />
 
     <style type="text/css">
     /*<![CDATA[*/
@@ -23,15 +23,15 @@
          <p class="ouweie">Deze pagina werkt niet in oude versies van Internet Explorer. Haal een nieuwe versie op: <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie-9/features">Discover Internet Explorer 9</a><p>
     <![endif]-->
     <div id="map" class="map"></div>
-    <script src="http://cdn.leafletjs.com/leaflet-0.7.1/leaflet.js" type="text/javascript"></script>
+    <script src="//cdn.leafletjs.com/leaflet-0.7.3/leaflet.js" type="text/javascript"></script>
     <script src="reverselocator.js" type="text/javascript"></script>
     <script type="text/javascript">
 //<![CDATA[
     var map = new L.Map('map');
-    var cloudmadeUrl = 'http://{s}.tile.cloudmade.com/BC9A493B41014CAABB98F0471D759707/997/256/{z}/{x}/{y}.png',
-                cloudmadeAttribution = 'Map data &copy; 2012 OpenStreetMap contributors, Imagery &copy; 2012 CloudMade',
-                cloudmade = new L.TileLayer(cloudmadeUrl, {maxZoom: 18, attribution: cloudmadeAttribution});
-    map.addLayer(cloudmade);
+    var mqLayer = L.tileLayer("http://otile{s}.mqcdn.com/tiles/1.0.0/osm/{z}/{x}/{y}.png", {
+            subdomains: "1234",
+            attribution: "&copy; <a href='http://www.openstreetmap.org/'>OpenStreetMap</a> and contributors, under an <a href='http://www.openstreetmap.org/copyright' title='ODbL'>open license</a>. Tiles Courtesy of <a href='http://www.mapquest.com/'>MapQuest</a> <img src='http://developer.mapquest.com/content/osm/mq_logo.png'>"});
+    map.addLayer(mqLayer);
     map.locate({setView: true, maxZoom: 14});
 
     var markerLocation = new L.LatLng(52.086, 5.114),
